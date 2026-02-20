@@ -462,6 +462,8 @@ run-shell $GUIX_PROFILE/share/tmux-plugins/continuum/continuum.tmux
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '5'
 
+# Disable vlock by setting the time to zero
+set -g lock-after-time 0
 
 # -- custom variables ----------------------------------------------------------
 
