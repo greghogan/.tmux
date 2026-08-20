@@ -463,6 +463,21 @@ run-shell ~/.guix-profile/share/tmux-plugins/continuum/continuum.tmux
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '5'
 
+# 1. Force 256 colors / truecolor inside tmux
+set -g default-terminal "tmux-256color"
+
+# 2. Map outer terminal capabilities (works with xterm, alacritty, kitty, etc.)
+set -as terminal-features ",*:RGB"
+set -ag terminal-overrides ",*:Tc"
+
+# 3. Ensure COLORTERM passes through from your host environment
+set -ga update-environment " COLORTERM"
+
+# Tell tmux that the outer terminal supports OSC 8 hyperlinks
+set -as terminal-features ',*:hyperlinks'
+set -as terminal-features ',xterm*:hyperlinks'
+set -as terminal-features ',screen*:hyperlinks'
+
 # Disable vlock by setting the time to zero
 set -g lock-after-time 0
 
